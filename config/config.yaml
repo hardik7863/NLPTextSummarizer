@@ -1,5 +1,5 @@
 artifacts_root: artifacts
-
+# path of artifact or root directory of  the output
 
 data_ingestion:
   root_dir: artifacts/data_ingestion

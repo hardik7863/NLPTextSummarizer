@@ -6,8 +6,11 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
+# ConfigBox is used to convert the dictionary into a class object
+# Path is used to specify the path of the file
+# Any is used to specify that the function can take any type of input
 
-
+# ensure_annotations is used to ensure whatever input you are giving is of the correct datatype
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
