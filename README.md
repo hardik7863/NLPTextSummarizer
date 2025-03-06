@@ -34,8 +34,8 @@ This project aims to develop a text summarization tool using Huggingface's trans
 ## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/21-NLPTextSummarizer.git
-    cd 21-NLPTextSummarizer
+    git clone https://github.com/hardik7863/NLPTextSummarizer.git
+    cd NLPTextSummarizer
     ```
 
 2. Install the required dependencies:
