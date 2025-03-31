@@ -1,50 +1,106 @@
-# Text Summarizer Using Huggingface
+# End-to-End Text Summarizer Project
 
-### Workflows 
+## Workflows
 
-1. Config.yaml
-2. Params.yaml
-3. Config entity
-4. Configuration Manager
-5. Update the components- Data Ingestion, Data Transformation, Model Trainer
-6. Create our Pipeline-- Training Pipeline, Prediction Pipeline
-7. Front end-- API's, Training API's, Batch Prediction API's
+1. Update `config.yaml`
+2. Update `params.yaml`
+3. Update entity
+4. Update the configuration manager in `src/config`
+5. Update the components
+6. Update the pipeline
+7. Update `main.py`
+8. Update `app.py`
 
-## Overview
-This project aims to develop a text summarization tool using Huggingface's transformer models. The tool generates concise summaries from large text documents, making it easier to extract key information quickly.
+---
 
-## Tech Stack
-- Python
-- Huggingface Transformers
-- TensorFlow/PyTorch
-- FastAPI (for API development)
-- Docker
-- Google Colab (for model training)
-- GitHub Actions (CI/CD)
+# How to Run?
 
-## Features
-- **Data Ingestion**: Collect and preprocess text data for training.
-- **Data Transformation**: Transform raw text data into a suitable format for model training.
-- **Model Training**: Train transformer models for text summarization using Huggingface's pre-trained models.
-- **Prediction Pipeline**: Generate summaries for new text inputs.
-- **RESTful APIs**: Expose model training and prediction functionalities via FastAPI.
-- **CI/CD**: Automate testing and deployment using GitHub Actions.
-- **Docker**: Containerize the application for scalable and reproducible environments.
+### Steps:
 
-## Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/hardik7863/NLPTextSummarizer.git
-    cd NLPTextSummarizer
+    https://github.com/hardik7863/NLPTextSummarizer.git
     ```
 
-2. Install the required dependencies:
+2. Create a conda environment after opening the repository:
+    ```bash
+    conda create -n summary python=3.8 -y
+    conda activate summary
+    ```
+
+3. Install the requirements:
     ```bash
     pip install -r requirements.txt
     ```
 
-## Usage
-### Training the Model
-To train the model, run the following command:
+4. Finally, run the following command:
+    ```bash
+    python app.py
+    ```
+
+5. Open up your local host and port to access the application.
+
+---
+
+## Author:
+**Hardik**  
+Data Scientist Enthusiast
+
+Email: hardikbatwal@gmail.com  
+
+---
+
+# AWS-CICD Deployment with GitHub Actions
+
+## Steps:
+
+### 1. Login to AWS Console.
+
+### 2. Create an IAM User for Deployment
+- **Access Required**:
+  1. EC2 access: Virtual machine.
+  2. ECR: Elastic Container Registry to save your Docker image in AWS.
+
+- **Deployment Description**:
+  1. Build a Docker image of the source code.
+  2. Push your Docker image to ECR.
+  3. Launch your EC2 instance.
+  4. Pull your image from ECR in EC2.
+  5. Launch your Docker image in EC2.
+
+- **Policies Required**:
+  1. `AmazonEC2ContainerRegistryFullAccess`
+  2. `AmazonEC2FullAccess`
+
+### 3. Create an ECR Repository
+- Save the URI: `566373416292.dkr.ecr.us-east-1.amazonaws.com/text-s`
+
+### 4. Create an EC2 Machine (Ubuntu)
+
+### 5. Open EC2 and Install Docker in the EC2 Machine:
 ```bash
-python main.py
+# Optional
+sudo apt-get update -y
+sudo apt-get upgrade
+
+# Required
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+```
+# 6. Configure EC2 as self-hosted runner:
+    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+
+
+# 7. Setup github secrets:
+
+    AWS_ACCESS_KEY_ID=
+
+    AWS_SECRET_ACCESS_KEY=
+
+    AWS_REGION = us-east-1
+
+    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
+
+    ECR_REPOSITORY_NAME = simple-app
